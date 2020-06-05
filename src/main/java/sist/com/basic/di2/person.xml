@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+  <context:annotation-config></context:annotation-config>		
+  <!-- <bean id="person1" class="sist.com.basic.di2.Person" init-method="initPerson" scope="singleton" p:name="혜진" p:age="22" p:addr="서울시 송파구">
+    <qualifier value="q1"></qualifier>
+  </bean>		
+  <bean id="person2" class="sist.com.basic.di2.Person" init-method="initPerson" scope="singleton" p:name="인찬" p:age="25" p:addr="서울시 강남구">
+    <qualifier value="q2"></qualifier>
+  </bean>  		
+  <bean id="society1" class="sist.com.basic.di2.Society"> -->
+  
+  <bean id="person1" class="sist.com.basic.di2.Person" init-method="initPerson" scope="singleton" p:name="혜진" p:age="22" p:addr="서울시 송파구">
+    
+  </bean>		
+  <bean id="person2" class="sist.com.basic.di2.Person" init-method="initPerson" scope="singleton" p:name="인찬" p:age="25" p:addr="서울시 강남구">
+    
+  </bean>  		
+  <bean id="society1" class="sist.com.basic.di2.Society">  
+  </bean>		
+
+
+</beans>
+
+
+
+
+
+

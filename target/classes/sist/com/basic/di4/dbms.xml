@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+<bean id="mysalDbms1" class="sist.com.basic.di4.MySqlDbms" p:url="211.63.89.99" p:account="scott" p:pasword="tiger" ></bean>
+<bean id="mysalDbms2" class="sist.com.basic.di4.MySqlDbms" p:url="211.63.89.100" p:account="apple" p:pasword="apple" ></bean>
+
+<bean id="oracleDbms1" class="sist.com.basic.di4.OralceDbms">
+  <property name="url" value="211.63.89.101"></property>
+  <property name="pasword" value="1234"></property>
+  <property name="account" value="orange"></property>  
+</bean>
+<bean id="oracleDbms2" class="sist.com.basic.di4.OralceDbms">
+   <constructor-arg name="url" value="211.63.89.109"></constructor-arg>
+   <constructor-arg name="account" value="blue"></constructor-arg>
+   <constructor-arg name="pasword" value="1234"></constructor-arg>
+   
+</bean>
+
+</beans>
+
+
+
+
+

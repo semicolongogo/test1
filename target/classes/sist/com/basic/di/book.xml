@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-3.0.xsd">
+  
+ <bean id="book1" class="sist.com.basic.di.Book" scope="prototype" p:bookName="노인과바다" p:author="양명모"  p:price="5000"></bean>
+ <bean id="book2" class="sist.com.basic.di.Book" scope="singleton">
+    <property name="bookName" value="데미안"></property>
+    <property name="price" value="9000"></property>
+    <property name="author" value="승환이"></property>
+ </bean>
+ <bean id="book3" class="sist.com.basic.di.Book">
+    <constructor-arg name="bookName" value="미움받을용기" ></constructor-arg>
+    <constructor-arg name="price" value="9000"></constructor-arg>
+    <constructor-arg name="author" value="최범균"></constructor-arg>
+ </bean>
+ <bean id="store1" class="sist.com.basic.di.Store" scope="prototype">
+     <property name="list">
+        <list>
+          <ref bean="book1"/>
+          <ref bean="book2"/>
+          <ref bean="book3"/>
+          <ref bean="book3"/>
+        </list>            
+     </property>
+     <property name="set">
+        <set>
+          <ref bean="book1"/>
+          <ref bean="book2"/>
+          <ref bean="book3"/>
+          <ref bean="book3"/>
+        </set>
+     </property>
+     <property name="map">
+       <map>
+         <entry>
+             <key>
+              <value type="java.lang.Integer">1</value>
+             </key>
+             <ref bean="book1"/>
+         </entry>
+         <entry>
+             <key>
+              <value type="java.lang.Integer">2</value>
+             </key>
+             <ref bean="book2"/>
+         </entry>
+         <entry>
+             <key>
+              <value type="java.lang.Integer">3</value>
+             </key>
+             <ref bean="book3"/>
+         </entry>
+       </map>
+     </property>
+     <property name="properties">
+       <props>
+         <prop key="211.63.89.99">딸기         
+         </prop>
+         <prop key="211.63.89.100">수박</prop>
+         <prop key="211.63.89.101">멜론</prop>
+       </props>
+     </property>
+ </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

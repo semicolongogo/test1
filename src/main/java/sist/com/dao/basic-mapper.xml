@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sist.com.bean.apple">
+  <select id="selectDeptList" resultType="dept">
+    SELECT * FROM DEPT
+  </select>
+
+  <select id="memberIdCheck" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT PASSWORD
+    FROM SIMEMBER
+    WHERE ID+#{VALUE}
+  </select>
+  
+  <insert id="insertBoot" parameterType="boot">
+    INSERT INTO BOOTBOARD VALUES(BOOTBOARD_SEQ.NEXTVAL,
+        #{subject},#{author},#{password},#{contents},0,#{fileName},sysdate)
+  </insert>
+  
+  <select id="getPassword" resultType="java.lang.String" parameterType="java.lang.Integer">
+  	SELECT PASSWORD FROM BOOTBOARD
+  	WHERE NO=#{VALUE}
+  </select>
+  
+  <delete id="deleteBoot" parameterType="int">
+  	DELETE FROM BOOTBOARD
+  	WHERE NO=#{VALUE}
+  </delete>
+  
+  
+  <select id="selectBootBoard" resultType="boot">
+     SELECT ROWNUM RM,NO,SUBJECT,AUTHOR,PASSWORD,CONTENTS,HIT,FILENAME,REGDATE
+	FROM(
+	SELECT ROWNUM RM,NO,SUBJECT,AUTHOR,PASSWORD,CONTENTS,HIT,FILENAME,REGDATE
+	FROM(
+	SELECT NO,SUBJECT,AUTHOR,PASSWORD,CONTENTS,HIT,FILENAME,REGDATE
+	FROM BOOTBOARD
+	ORDER BY NO DESC))
+	WHERE RM BETWEEN #{start} AND #{end}
+  </select>
+  
+  <update id="updateHitBoard" parameterType="int">
+  	UPDATE BOOTBOARD SET HIT=HIT+1
+  	WHERE NO=#{VALUE}
+  
+  </update>
+  
+  
+  <select id="infoBoard" parameterType="int" resultType="boot">
+  	SELECT * FROM BOOTBOARD
+  	WHERE NO=#{VALUE}
+  </select>
+  
+  <insert id="insertDataUpdate" parameterType="sist.com.dto.ParamBean">
+  	INSERT INTO JAVADATA VALUES(#{no},#{msg})
+  </insert>
+  <update id="updateInsert" parameterType="sist.com.dto.ParamBean">
+  	UPDATE JAVADATA SET MSG=#{msg}
+  	WHERE NO=#{no}
+  </update>
+  <select id="getTotalMember" resultType="int" parameterType="HashMap">
+  	SELECT COUNT(*) FROM BOOTBOARD
+  	<if test="query!=null and data!=null">   <!-- where안에 if 써도됨 -->
+  		<where>
+  			${query} LIKE '%'||#{data}||'%'
+  		</where>
+  	</if>
+  </select>
+  
+  
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
